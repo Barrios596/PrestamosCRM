@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="863.0" prefWidth="1117.0" style="-fx-background-color: TRANSPARENT;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane fx:id="menuPanel" prefHeight="77.0" prefWidth="1117.0" style="-fx-background-color: #02152b;">
+         <children>
+            <ImageView fx:id="imgSearch" fitHeight="46.0" fitWidth="51.0" layoutX="331.0" layoutY="15.0" onMouseClicked="#onSearchButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/search.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgGraph" fitHeight="46.0" fitWidth="46.0" layoutX="536.0" layoutY="16.0" onMouseClicked="#onGraphButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/graph.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgTwitter" fitHeight="39.0" fitWidth="46.0" layoutX="734.0" layoutY="19.0" onMouseClicked="#onTwitterButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/twitter.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgSalir" fitHeight="46.0" fitWidth="51.0" layoutX="931.0" layoutY="15.0" onMouseClicked="#onExitButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/exit.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgAgregar" fitHeight="46.0" fitWidth="51.0" layoutX="128.0" layoutY="19.0" onMouseClicked="#onUserButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/adduser.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="agregarPanel" layoutY="100.0" prefHeight="768.0" prefWidth="1117.0" style="-fx-background-color: #02152b;">
+         <children>
+            <JFXTextField focusColor="#0f9d58" layoutX="214.0" layoutY="94.0" maxWidth="285.0" minWidth="220.0" prefHeight="36.0" prefWidth="285.0" promptText="Ingrese el nombre" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="68.0" layoutY="101.0" prefHeight="21.0" prefWidth="106.0" text="NOMBRE:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="328.0" layoutY="30.0" prefHeight="35.0" prefWidth="454.0" text="Ingrese los datos para el nuevo usuario:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="68.0" layoutY="172.0" prefHeight="21.0" prefWidth="106.0" text="APELLIDO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="68.0" layoutY="240.0" prefHeight="23.0" prefWidth="106.0" text="E-MAIL:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField focusColor="#0f9d58" layoutX="214.0" layoutY="167.0" maxWidth="285.0" minWidth="220.0" prefHeight="36.0" prefWidth="285.0" promptText="Ingrese el apellido" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="#0f9d58" layoutX="214.0" layoutY="234.0" maxWidth="285.0" minWidth="220.0" prefHeight="36.0" prefWidth="285.0" promptText="Ingrese el correo electrónico" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <Separator layoutX="555.0" layoutY="86.0" opacity="0.3" orientation="VERTICAL" prefHeight="541.0" prefWidth="8.0" />
+            <Label layoutX="62.0" layoutY="307.0" prefHeight="23.0" prefWidth="106.0" text="USUARIO" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField focusColor="#0f9d58" layoutX="214.0" layoutY="309.0" maxWidth="285.0" minWidth="220.0" prefHeight="36.0" prefWidth="285.0" promptText="Ingrese el nombre de usuario" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="68.0" layoutY="392.0" prefHeight="23.0" prefWidth="106.0" text="TELÉFONO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField focusColor="#0f9d58" layoutX="214.0" layoutY="386.0" maxWidth="285.0" minWidth="220.0" prefHeight="36.0" prefWidth="285.0" promptText="Ingrese el número de teléfono" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="66.0" layoutY="457.0" prefHeight="23.0" prefWidth="120.0" text="DOCUMENTO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField focusColor="#0f9d58" layoutX="214.0" layoutY="451.0" maxWidth="285.0" minWidth="220.0" prefHeight="36.0" prefWidth="285.0" promptText="Ingrese el número de documento" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXRadioButton layoutX="51.0" layoutY="493.0" selected="true" text="DPI" textFill="WHITE">
+               <toggleGroup>
+                  <ToggleGroup fx:id="documento" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton layoutX="205.0" layoutY="493.0" text="Pasaporte" textFill="WHITE" toggleGroup="$documento" />
+            <JFXRadioButton layoutX="377.0" layoutY="493.0" text="Licencia" textFill="WHITE" toggleGroup="$documento" />
+            <JFXComboBox fx:id="comboNacionalidad" layoutX="225.0" layoutY="553.0" prefHeight="31.0" prefWidth="235.0" promptText="Escoga la nacionalidad" style="-fx-background-color: WHITE;" />
+            <Label layoutX="62.0" layoutY="325.0" prefHeight="23.0" prefWidth="106.0" text="DE TWITTER:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextArea focusColor="#0f9d58" layoutX="789.0" layoutY="101.0" maxWidth="265.0" minWidth="219.0" prefHeight="46.0" prefWidth="265.0" promptText="Ingrese aquí su dirección" unFocusColor="#02152b" />
+            <Label layoutX="625.0" layoutY="102.0" prefHeight="21.0" prefWidth="106.0" text="DIRECCIÓN:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="625.0" layoutY="167.0" prefHeight="21.0" prefWidth="106.0" text="ESTADO" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="625.0" layoutY="185.0" prefHeight="21.0" prefWidth="106.0" text="CIVIL:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="comboEstadoCivil" layoutX="789.0" layoutY="171.0" prefHeight="31.0" prefWidth="163.0" promptText="Elija estado civil" style="-fx-background-color: WHITE;" />
+            <JFXDatePicker layoutX="787.0" layoutY="234.0" prefHeight="37.0" prefWidth="163.0" promptText="DD/MM/AAAA" style="-fx-background-color: WHITE;" />
+            <Label layoutX="625.0" layoutY="233.0" prefHeight="21.0" prefWidth="106.0" text="FECHA DE" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="625.0" layoutY="252.0" prefHeight="22.0" prefWidth="120.0" text="NACIMIENTO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="625.0" layoutY="375.0" prefHeight="21.0" prefWidth="106.0" text="MONTO" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="625.0" layoutY="394.0" prefHeight="21.0" prefWidth="106.0" text="MÁXIMO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField focusColor="#0f9d58" layoutX="796.0" layoutY="377.0" maxWidth="265.0" minWidth="220.0" prefHeight="36.0" prefWidth="235.0" promptText="Ingrese máximo de préstamo" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="778.0" layoutY="383.0" prefHeight="22.0" prefWidth="19.0" text="Q." textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="160.0" fitWidth="163.0" layoutX="872.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/portrait.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="622.0" layoutY="458.0" prefHeight="22.0" prefWidth="131.0" text="ESCOGER FOTO" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="622.0" layoutY="476.0" prefHeight="22.0" prefWidth="113.0" text="DE USUARIO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField focusColor="#0f9d58" layoutX="614.0" layoutY="504.0" maxWidth="265.0" minWidth="131.0" prefHeight="36.0" prefWidth="235.0" promptText="Dirección de la imagen" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton buttonType="RAISED" layoutX="622.0" layoutY="553.0" prefHeight="31.0" prefWidth="113.0" ripplerFill="#0f9d58" style="-fx-background-color: WHITE;" text="Examinar" textFill="#0f9d58">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="377.0" layoutY="648.0" prefHeight="77.0" prefWidth="365.0" ripplerFill="WHITE" style="-fx-background-color: #0f9d58;" text="CREAR USUARIO" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="62.0" layoutY="557.0" prefHeight="23.0" prefWidth="148.0" text="NACIONALIDAD:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="622.0" layoutY="314.0" prefHeight="22.0" prefWidth="113.0" text="ENCARGADO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="comboEncargado" layoutX="787.0" layoutY="310.0" prefHeight="31.0" prefWidth="235.0" promptText="Elija un empleado" style="-fx-background-color: WHITE;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="busquedaPanel" layoutY="102.0" prefHeight="765.0" prefWidth="1117.0" style="-fx-background-color: #02152b;" visible="false" AnchorPane.topAnchor="102.0">
+         <children>
+            <Label layoutX="61.0" layoutY="21.0" prefHeight="35.0" prefWidth="545.0" text="Elija los datos que desea incluir en su búsqueda:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Separator layoutX="51.0" layoutY="215.0" opacity="0.3" prefHeight="3.0" prefWidth="835.0" />
+            <JFXTextField focusColor="#0f9d58" layoutX="51.0" layoutY="68.0" maxWidth="285.0" minWidth="170.0" prefHeight="36.0" prefWidth="170.0" promptText="Ingrese el nombre" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="#0f9d58" layoutX="333.0" layoutY="68.0" maxWidth="285.0" minWidth="170.0" prefHeight="36.0" prefWidth="192.0" promptText="Ingrese el apellido" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="#0f9d58" layoutX="636.0" layoutY="68.0" maxWidth="285.0" minWidth="170.0" prefHeight="36.0" prefWidth="183.0" promptText="Ingrese el teléfono" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField focusColor="#0f9d58" layoutX="874.0" layoutY="68.0" maxWidth="285.0" minWidth="170.0" prefHeight="36.0" prefWidth="192.0" promptText="Ingrese número de doc." style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton buttonType="RAISED" layoutX="469.0" layoutY="160.0" prefHeight="39.0" prefWidth="183.0" ripplerFill="WHITE" style="-fx-background-color: #0f9d58;" text="BUSCAR" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </JFXButton>
+            <TableView layoutX="51.0" layoutY="248.0" prefHeight="450.0" prefWidth="1019.0">
+              <columns>
+                <TableColumn prefWidth="128.0" text="No. Documento" />
+                <TableColumn minWidth="0.0" prefWidth="132.0" text="Nombre" />
+                  <TableColumn minWidth="0.0" prefWidth="128.0" text="Apellido" />
+                  <TableColumn minWidth="0.0" prefWidth="73.0" text="Dirección" />
+                  <TableColumn minWidth="0.0" prefWidth="178.0" text="Nacionalidad" />
+                  <TableColumn minWidth="0.0" prefWidth="125.0" text="Estado Civil" />
+                  <TableColumn minWidth="0.0" prefWidth="254.0" text="Encargado" />
+              </columns>
+            </TableView>
+            <JFXButton buttonType="RAISED" layoutX="469.0" layoutY="712.0" prefHeight="39.0" prefWidth="183.0" ripplerFill="WHITE" style="-fx-background-color: #b2111f;" text="Reiniciar Tabla" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXCheckBox layoutX="83.0" layoutY="116.0" text="Nombre" textFill="WHITE" />
+            <JFXCheckBox layoutX="369.0" layoutY="116.0" text="Apellido" textFill="WHITE" />
+            <JFXCheckBox layoutX="667.0" layoutY="116.0" text="Teléfono" textFill="WHITE" />
+            <JFXCheckBox layoutX="895.0" layoutY="116.0" text="No. Documento" textFill="WHITE" />
+            <Separator layoutX="636.0" layoutY="37.0" opacity="0.3" prefHeight="3.0" prefWidth="425.0" />
+            <Label layoutX="895.0" layoutY="198.0" prefHeight="35.0" prefWidth="183.0" text="Tabla dinámica" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="reportesPanel" layoutY="99.0" prefHeight="768.0" prefWidth="1117.0" style="-fx-background-color: #02152b;" visible="false" AnchorPane.rightAnchor="2.0" />
+      <AnchorPane fx:id="twitterPanel" layoutX="-1.0" layoutY="98.0" prefHeight="775.0" prefWidth="1180.0" style="-fx-background-color: #02152b;" visible="false" AnchorPane.topAnchor="100.0" />
+      <ImageView fx:id="flecha1" fitHeight="20.0" fitWidth="68.0" layoutX="124.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/arrowup.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="flecha2" fitHeight="20.0" fitWidth="68.0" layoutX="335.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.rightAnchor="744.6086959838867">
+         <image>
+            <Image url="@img/arrowup.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="flecha3" fitHeight="20.0" fitWidth="68.0" layoutX="539.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.rightAnchor="540.6086959838867">
+         <image>
+            <Image url="@img/arrowup.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="flecha4" fitHeight="20.0" fitWidth="68.0" layoutX="733.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.rightAnchor="346.6086959838867">
+         <image>
+            <Image url="@img/arrowup.png" />
+         </image>
+      </ImageView>
+   </children>
+   <effect>
+      <DropShadow height="36.55" radius="14.665" spread="0.18" width="24.11" />
+   </effect>
+</AnchorPane>
