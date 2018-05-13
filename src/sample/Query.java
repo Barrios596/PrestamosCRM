@@ -139,6 +139,23 @@ public class Query {
             System.out.println(ex.getMessage());
         }
     }
+    
+        public ResultSet CallView (String nameVista) {
+
+        String SQL = "SELECT * FROM " + nameVista;
+        BDConeccion bd = new BDConeccion();
+        ResultSet rs = null;
+
+        try (Connection conn = bd.connect();
+             Statement stmt = conn.createStatement()
+        ) {
+            rs = stmt.executeQuery(SQL);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return rs;
+    }
+    
 
     public Integer contadorRegistros (ResultSet rs) throws SQLException {
         int count = 0;
