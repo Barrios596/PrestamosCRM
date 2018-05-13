@@ -122,6 +122,23 @@ public class Query {
             }
         }
     }
+    
+        public void eliminarQuery(int id) {
+        String SQL = "DELETE FROM cliente WHERE documento = ?";
+
+        BDConeccion bd = new BDConeccion();
+
+        try (Connection conn = bd.connect();
+             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+
+            pstmt.setInt(1, id);
+
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
     public Integer contadorRegistros (ResultSet rs) throws SQLException {
         int count = 0;
