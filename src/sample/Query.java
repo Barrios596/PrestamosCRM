@@ -94,6 +94,34 @@ public class Query {
         }
         return lista;
     }
+    
+        public void updateQuery (String [] valores, String id_cliente) {
+
+        if (valores.length > 0) {
+            String SQL = "UPDATE cliente " +
+                    "SET id_documento = ?, nombre = ?, apellido = ?, departamento = ?, id_nacionalidad = ?, id_estadoc = ?, id_empleado = ?" +
+                    "WHERE documento = " + id_cliente;
+
+            BDConeccion bd = new BDConeccion();
+
+            try(Connection conn = bd.connect();
+                PreparedStatement pstmt = conn.prepareStatement(SQL)){
+
+                pstmt.setInt(1,Integer.parseInt(valores[0]));
+                pstmt.setInt(2,Integer.parseInt(valores[1]));
+                pstmt.setInt(3,Integer.parseInt(valores[2]));
+                pstmt.setInt(4,Integer.parseInt(valores[3]));
+                pstmt.setInt(5,Integer.parseInt(valores[4]));
+                pstmt.setInt(6,Integer.parseInt(valores[5]));
+                pstmt.setInt(7,Integer.parseInt(valores[6]));
+
+                pstmt.executeUpdate();
+
+            }catch(SQLException ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+    }
 
     public Integer contadorRegistros (ResultSet rs) throws SQLException {
         int count = 0;
