@@ -1,3 +1,5 @@
+package sample;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -6,7 +8,7 @@ public class BDConeccion {
 
     private final String url = "jdbc:postgresql://localhost/crm";
     private final String user = "postgres";
-    private final String password = "postgre";
+    private final String password = "CLANEVIL596";
 
     /**
      * Connect to the PostgreSQL database

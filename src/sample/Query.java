@@ -1,12 +1,18 @@
+package sample;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import sample.BDConeccion;
+
 import java.sql.*;
 
 public class Query {
 
     public void insertarCliente(Cliente cliente) {
 
-        String SQL = "INSERT INTO public.\"Cliente\"(" +
-                "documento, nombre, apellido, telefono, correo, direccion, fecha_nacimiento, id_estadoc, " +
-                "monto_maximo, usarname_twitter, id_empleado, id_nacionalidad, id_documento)" +
+        String SQL = "INSERT INTO public.cliente(" +
+                "id_documento, nombre, apellido, telefono, correo, direccion, fecha_nacimiento, id_estadoc, " +
+                "monto_maximo, usarname_twitter, id_empleado, id_nacionalidad, documento)" +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         BDConeccion bd = new BDConeccion();
@@ -22,11 +28,11 @@ public class Query {
             stmt.setString(6,cliente.getDireccion());
             stmt.setDate(7, cliente.getFechaNacimiento());
             stmt.setInt(8,cliente.getIdEstadoC());
-            stmt.setFloat(9,cliente.getMontoMaximo());
+            stmt.setDouble(9,cliente.getMontoMaximo());
             stmt.setString(10, cliente.getUsernameTwitter());
-            stmt.setInt(11, cliente.getIdEmpleado());
+            stmt.setString(11, cliente.getIdEmpleado());
             stmt.setInt(12,cliente.getIdNacionalidad());
-            stmt.setInt(13,cliente.getIdDocumento());
+            stmt.setString(13,cliente.getIdDocumento());
 
             stmt.executeUpdate();
             stmt.close();
@@ -37,20 +43,21 @@ public class Query {
 
     }
 
-    public ResultSet generalQuery (String [] condiciones, String [] valores) {
+    public ObservableList<Fila1> generalQuery (String [] condiciones, String [] valores) {
 
-        String SQL = "SELECT (d.documento || ' ' || c.documento) as doc_tipo, c.nombre, c.apellido, c.direccion, n.nacionalidad, " +
+        ObservableList<Fila1> lista = FXCollections.observableArrayList();
+        String SQL = "SELECT d.documento as tipoDocumento, c.documento as numDocumento, c.nombre, c.apellido, c.direccion, n.nacionalidad, " +
                 "ec.estado, (em.nombre || ' ' || em.apellido) as empleado\n" +
                 "FROM cliente c JOIN documento d ON (c.id_documento = d.id_documento)\n" +
                 "JOIN nacionalidad n  ON (c.id_nacionalidad = n.id_nacionalidad) \n" +
                 "JOIN estadoc ec ON (c.id_estadoc = ec.id_estadoc)\n" +
-                "JOIN empleado em ON (c.id_empleado = em.documento);";
+                "JOIN empleado em ON (c.id_empleado = em.id_empleado)\n";
 
         if (valores.length > 0) {
-            SQL = SQL + " WHERE " + condiciones[0] + "LIKE %" + valores[0] + "%";
+            SQL = SQL + "WHERE c." + condiciones[0] + " LIKE \'%" + valores[0] + "%\'";
             if (valores.length > 1) {
                 for (int x = 1; x < valores.length; x++) {
-                    SQL = SQL + " AND " + condiciones[x] + "LIKE %" + valores[x] + "%";
+                    SQL = SQL + " AND c." + condiciones[x] + " LIKE \'%" + valores[x] + "%\'";
                 }
             }
         }
@@ -59,12 +66,33 @@ public class Query {
 
         try (Connection conn = bd.connect();
              Statement stmt = conn.createStatement()) {
+            System.out.println("llegó");
+            System.out.println(SQL);
             rs = stmt.executeQuery(SQL);
+            try {
+            while (rs.next()) {
+
+                lista.add(
+                        new Fila1(
+                                rs.getString("tipodocumento"),
+                                rs.getString("numdocumento"),
+                                rs.getString("nombre"),
+                                rs.getString("apellido"),
+                                rs.getString("direccion"),
+                                rs.getString("nacionalidad"),
+                                rs.getString("estado"),
+                                rs.getString("empleado")
+                        )
+                );
+            }
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
 
         } catch (SQLException ex) {
             System.out.print("ERROR: Hubo un error al conectar con la BD o ejecutar la query");
         }
-        return rs;
+        return lista;
     }
 
     public Integer contadorRegistros (ResultSet rs) throws SQLException {

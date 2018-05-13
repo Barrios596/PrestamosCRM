@@ -1,3 +1,5 @@
+package sample;
+
 import java.sql.Date;
 
 public class Cliente {
@@ -10,11 +12,11 @@ public class Cliente {
     private String direccion;
     private Date fechaNacimiento;
     private Integer idEstadoC;
-    private Float montoMaximo;
+    private double montoMaximo;
     private String usernameTwitter;
-    private Integer idEmpleado;
+    private String idEmpleado;
     private Integer idNacionalidad;
-    private Integer idDocumento;
+    private String idDocumento;
 
     public Integer getDocumento() {
         return documento;
@@ -80,11 +82,11 @@ public class Cliente {
         this.idEstadoC = idEstadoC;
     }
 
-    public Float getMontoMaximo() {
+    public double getMontoMaximo() {
         return montoMaximo;
     }
 
-    public void setMontoMaximo(Float montoMaximo) {
+    public void setMontoMaximo(double montoMaximo) {
         this.montoMaximo = montoMaximo;
     }
 
@@ -96,11 +98,11 @@ public class Cliente {
         this.usernameTwitter = usernameTwitter;
     }
 
-    public Integer getIdEmpleado() {
+    public String getIdEmpleado() {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(Integer idEmpleado) {
+    public void setIdEmpleado(String idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 
@@ -112,11 +114,11 @@ public class Cliente {
         this.idNacionalidad = idNacionalidad;
     }
 
-    public Integer getIdDocumento() {
+    public String getIdDocumento() {
         return idDocumento;
     }
 
-    public void setIdDocumento(Integer idDocumento) {
+    public void setIdDocumento(String idDocumento) {
         this.idDocumento = idDocumento;
     }
 }
