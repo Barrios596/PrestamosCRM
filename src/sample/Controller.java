@@ -51,6 +51,7 @@ public class Controller implements Initializable{
     @FXML private BarChart chart2;
     @FXML private BarChart chart3;
     @FXML private BarChart chart4;
+    @FXML private BarChart chart5;
 
     @FXML private ImageView imgAgregar;
     @FXML private ImageView imgSearch;
@@ -1043,6 +1044,11 @@ public class Controller implements Initializable{
         set4.getData().add(new XYChart.Data("Zacapa",datosG4[21]));
         chart4.getData().addAll(set4);
 
+        int[] datosG5 = query.grafica5Query();
+        XYChart.Series set5 = new XYChart.Series();
+        set5.getData().add(new XYChart.Data(">25000",datosG5[0]));
+        set5.getData().add(new XYChart.Data("<25000",datosG5[1]));
+        chart5.getData().addAll(set5);
     }
 
     public void onReiniciarButtonClicked(MouseEvent event) {
@@ -1100,7 +1106,7 @@ public class Controller implements Initializable{
                 event.consume();
             }
             String temp = event.getCode().toString();
-            if(!event.getCode().toString().matches("[a-zA-ZáéíóúÁÉÍÓÚ]") && event.getCode() != KeyCode.BACK_SPACE && event.getCode() != KeyCode.SPACE
+            if(!event.getCode().toString().matches("[a-zA-ZáéíóúÁÉÍÓÚ´]") && event.getCode() != KeyCode.BACK_SPACE && event.getCode() != KeyCode.SPACE
             && event.getCode() != KeyCode.SHIFT){
                 if (event.getEventType() == KeyEvent.KEY_PRESSED){
                     willConsume = true;

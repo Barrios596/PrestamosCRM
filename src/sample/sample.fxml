@@ -449,7 +449,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="reportesPanel" layoutY="99.0" prefHeight="768.0" prefWidth="1117.0" style="-fx-background-color: #02152b;" AnchorPane.rightAnchor="2.0">
+      <AnchorPane fx:id="reportesPanel" layoutY="99.0" prefHeight="768.0" prefWidth="1117.0" style="-fx-background-color: #02152b;" visible="false" AnchorPane.rightAnchor="2.0">
          <children>
             <JFXTabPane layoutX="36.0" layoutY="74.0" prefHeight="671.0" prefWidth="1043.0" style="">
                <tabs>
@@ -588,7 +588,7 @@
                                               <NumberAxis side="LEFT" />
                                             </yAxis>
                                           </BarChart>
-                                          <BarChart fx:id="chart3" layoutX="69.0" layoutY="435.0" prefHeight="215.0" prefWidth="374.0" title="Cantidad de clientes por estado civil">
+                                          <BarChart fx:id="chart3" layoutX="69.0" layoutY="421.0" prefHeight="215.0" prefWidth="374.0" title="Cantidad de clientes por estado civil">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -597,6 +597,14 @@
                                             </yAxis>
                                           </BarChart>
                                           <BarChart fx:id="chart4" layoutX="69.0" layoutY="222.0" prefHeight="213.0" prefWidth="882.0" title="Promedio de monto máximo por departamento (Guatemala)">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                          <BarChart fx:id="chart5" layoutX="560.0" layoutY="421.0" prefHeight="208.0" prefWidth="365.0" title="Prestamos altos y bajos">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>

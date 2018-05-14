@@ -162,6 +162,36 @@ public class Query {
         return salida;
     }
 
+    public int[] grafica5Query(){
+        int[] salida = new int[2];
+        String SQL = "SELECT prestamos_arriba, prestamos_abajo\n" +
+                "FROM (SELECT count(*) as prestamos_arriba\n" +
+                "\tFROM cliente\n" +
+                "\tWHERE monto_maximo >= 25000) t1,\n" +
+                "\t(SELECT count(*) as prestamos_abajo\n" +
+                "\tFROM cliente\n" +
+                "\tWHERE monto_maximo < 25000) t2";
+        BDConeccion bd = new BDConeccion();
+        ResultSet rs = null;
+        try (Connection conn = bd.connect();
+             Statement stmt = conn.createStatement()) {
+            System.out.println(SQL);
+            rs = stmt.executeQuery(SQL);
+            try {
+                rs.next();
+                salida[0]=rs.getInt("prestamos_arriba");
+                salida[1]=rs.getInt("prestamos_abajo");
+
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+
+        } catch (SQLException ex) {
+            System.out.print("ERROR: Hubo un error al conectar con la BD o ejecutar la query");
+        }
+        return salida;
+    }
+
     public ObservableList<Fila1> generalQuery (String [] condiciones, String [] valores) {
 
         ObservableList<Fila1> lista = FXCollections.observableArrayList();
