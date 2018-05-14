@@ -3,11 +3,18 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -60,7 +67,7 @@
                   <Font name="Microsoft YaHei UI Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="328.0" layoutY="30.0" prefHeight="35.0" prefWidth="454.0" text="Ingrese los datos para el nuevo usuario:" textFill="WHITE">
+            <Label layoutX="328.0" layoutY="30.0" prefHeight="35.0" prefWidth="454.0" text="Ingrese los datos para el nuevo cliente:" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -230,7 +237,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="busquedaPanel" layoutY="102.0" prefHeight="765.0" prefWidth="1117.0" style="-fx-background-color: #02152b;" AnchorPane.topAnchor="102.0">
+      <AnchorPane fx:id="busquedaPanel" layoutY="102.0" prefHeight="765.0" prefWidth="1117.0" style="-fx-background-color: #02152b;" visible="false" AnchorPane.topAnchor="102.0">
          <children>
             <Label layoutX="61.0" layoutY="21.0" prefHeight="35.0" prefWidth="580.0" text="Ingrese los datos que desea incluir en su búsqueda:" textFill="WHITE">
                <font>
@@ -275,7 +282,7 @@
                   <TableColumn fx:id="colEncargado" minWidth="0.0" prefWidth="191.0" text="Encargado" />
               </columns>
             </TableView>
-            <JFXButton fx:id="reiniciarButton" buttonType="RAISED" layoutX="754.0" layoutY="606.0" onMouseClicked="#onReiniciarButtonClicked" prefHeight="39.0" prefWidth="183.0" ripplerFill="WHITE" style="-fx-background-color: #09419b;" text="Reiniciar Tabla" textFill="WHITE">
+            <JFXButton fx:id="reiniciarButton" buttonType="RAISED" layoutX="734.0" layoutY="644.0" onMouseClicked="#onReiniciarButtonClicked" prefHeight="39.0" prefWidth="183.0" ripplerFill="WHITE" style="-fx-background-color: #09419b;" text="Reiniciar Tabla" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
@@ -286,29 +293,29 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="948.0" layoutY="615.0" text="Conteo:" textFill="WHITE" />
+            <Label layoutX="944.0" layoutY="653.0" text="Conteo:" textFill="WHITE" />
             <Label layoutX="61.0" layoutY="104.0" prefHeight="35.0" prefWidth="580.0" text="*Si hay un campo que no desea incluir en su búsqueda, déjelo en blanco." textFill="WHITE">
                <font>
                   <Font size="11.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="460.0" layoutY="681.0" prefHeight="39.0" prefWidth="183.0" ripplerFill="WHITE" style="-fx-background-color: #c62f01;" text="Editar Usuario" textFill="WHITE">
+            <JFXButton fx:id="editarUsuarioButton" buttonType="RAISED" layoutX="460.0" layoutY="681.0" onMouseClicked="#onEditarUsuarioClicked" prefHeight="39.0" prefWidth="183.0" ripplerFill="WHITE" style="-fx-background-color: #c62f01;" text="Editar Usuario" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="460.0" layoutY="625.0" prefHeight="39.0" prefWidth="183.0" ripplerFill="WHITE" style="-fx-background-color: #b2111f;" text="Eliminar Usuario" textFill="WHITE">
+            <JFXButton fx:id="eliminarUsuarioButton" buttonType="RAISED" layoutX="460.0" layoutY="625.0" onMouseClicked="#onEliminarUsuarioClicked" prefHeight="39.0" prefWidth="183.0" ripplerFill="WHITE" style="-fx-background-color: #b2111f;" text="Eliminar Usuario" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </JFXButton>
-            <Label layoutX="1016.0" layoutY="615.0" text="0" textFill="WHITE" />
-            <Label layoutX="38.0" layoutY="575.0" prefHeight="35.0" prefWidth="398.0" text="Usuario Escogido:" textFill="WHITE">
+            <Label fx:id="labelConteo" layoutX="1015.0" layoutY="653.0" text="0" textFill="WHITE" />
+            <Label layoutX="38.0" layoutY="588.0" prefHeight="35.0" prefWidth="148.0" text="Usuario Escogido:" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fx:id="avatarSeleccionado" fitHeight="91.0" fitWidth="163.0" layoutX="44.0" layoutY="634.0" onMouseClicked="#onUserButtonClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="avatarSeleccionado" fitHeight="91.0" fitWidth="163.0" layoutX="44.0" layoutY="634.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@img/portrait.png" />
                </image>
@@ -326,8 +333,307 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="reportesPanel" layoutY="99.0" prefHeight="768.0" prefWidth="1117.0" style="-fx-background-color: #02152b;" visible="false" AnchorPane.rightAnchor="2.0" />
-      <AnchorPane fx:id="twitterPanel" layoutX="-1.0" layoutY="98.0" prefHeight="775.0" prefWidth="1180.0" style="-fx-background-color: #02152b;" visible="false" AnchorPane.topAnchor="100.0" />
+      <AnchorPane fx:id="modificarPanel" layoutX="-8.0" layoutY="103.0" prefHeight="758.0" prefWidth="1128.0" style="-fx-background-color: #02152b;" visible="false">
+         <children>
+            <JFXTextField fx:id="nombreEdit" focusColor="#0f9d58" layoutX="214.0" layoutY="106.0" maxWidth="285.0" minWidth="220.0" prefHeight="36.0" prefWidth="285.0" promptText="Ingrese el nombre" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="68.0" layoutY="113.0" prefHeight="21.0" prefWidth="106.0" text="NOMBRE:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="373.0" layoutY="32.0" prefHeight="35.0" prefWidth="365.0" text="Modifique los datos del cliente:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="68.0" layoutY="185.0" prefHeight="21.0" prefWidth="106.0" text="APELLIDO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="apellidoEdit" focusColor="#0f9d58" layoutX="214.0" layoutY="178.0" maxWidth="285.0" minWidth="220.0" prefHeight="36.0" prefWidth="285.0" promptText="Ingrese el apellido" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <Separator layoutX="556.0" layoutY="112.0" opacity="0.3" orientation="VERTICAL" prefHeight="384.0" prefWidth="0.0" />
+            <Label layoutX="69.0" layoutY="260.0" prefHeight="23.0" prefWidth="120.0" text="DOCUMENTO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXRadioButton fx:id="dpiRadio1" layoutX="68.0" layoutY="296.0" selected="true" text="DPI" textFill="WHITE">
+               <toggleGroup>
+                  <ToggleGroup fx:id="documento1" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="pasaporteRadio1" layoutX="240.0" layoutY="296.0" text="Pasaporte" textFill="WHITE" toggleGroup="$documento1" />
+            <JFXRadioButton fx:id="licenciaRadio1" layoutX="406.0" layoutY="296.0" text="Licencia" textFill="WHITE" toggleGroup="$documento1" />
+            <JFXComboBox fx:id="nacionalidadEdit" layoutX="226.0" layoutY="375.0" prefHeight="31.0" prefWidth="235.0" promptText="Escoga la nacionalidad" style="-fx-background-color: WHITE;" />
+            <JFXTextArea fx:id="departamentoEdit" focusColor="#0f9d58" layoutX="789.0" layoutY="101.0" maxWidth="265.0" minWidth="219.0" prefHeight="46.0" prefWidth="265.0" promptText="Ingrese aquí su dirección" unFocusColor="#02152b" />
+            <Label layoutX="622.0" layoutY="105.0" prefHeight="21.0" prefWidth="106.0" text="ESTADO/" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="618.0" layoutY="176.0" prefHeight="21.0" prefWidth="106.0" text="ESTADO" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="618.0" layoutY="194.0" prefHeight="21.0" prefWidth="106.0" text="CIVIL:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="estadoCivilEdit" layoutX="789.0" layoutY="181.0" prefHeight="31.0" prefWidth="163.0" promptText="Elija estado civil" style="-fx-background-color: WHITE;" />
+            <ImageView fx:id="avatarImg1" fitHeight="160.0" fitWidth="163.0" layoutX="849.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@img/portrait.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="613.0" layoutY="304.0" prefHeight="22.0" prefWidth="131.0" text="ESCOGER FOTO" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="614.0" layoutY="326.0" prefHeight="22.0" prefWidth="113.0" text="DE USUARIO:" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="pathEdit" focusColor="#0f9d58" layoutX="605.0" layoutY="354.0" maxWidth="265.0" minWidth="131.0" prefHeight="36.0" prefWidth="235.0" promptText="Dirección de la imagen" style="-fx-text-fill: #5cd072;" unFocusColor="#b5a3a3" visible="false">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="15.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="examinarEdit" buttonType="RAISED" layoutX="614.0" layoutY="402.0" onMouseClicked="#onExaminarButtonClicked" prefHeight="31.0" prefWidth="113.0" ripplerFill="#0f9d58" style="-fx-background-color: WHITE;" text="Examinar" textFill="#0f9d58" visible="false">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="actualizarButton" buttonType="RAISED" layoutX="661.0" layoutY="573.0" onMouseClicked="#onActualizarUsuarioClicked" prefHeight="57.0" prefWidth="203.0" ripplerFill="WHITE" style="-fx-background-color: #0f9d58;" text="ACTUALIZAR" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="68.0" layoutY="379.0" prefHeight="23.0" prefWidth="148.0" text="NACIONALIDAD:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="614.0" layoutY="249.0" prefHeight="22.0" prefWidth="113.0" text="ENCARGADO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="encargadoEdit" layoutX="789.0" layoutY="244.0" prefHeight="31.0" prefWidth="235.0" promptText="Elija un empleado" style="-fx-background-color: WHITE;" />
+            <Label layoutX="622.0" layoutY="122.0" prefHeight="22.0" prefWidth="148.0" text="DEPARTAMENTO:" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI Bold" size="16.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="cancelarActualizacionButton" buttonType="RAISED" layoutX="293.0" layoutY="573.0" onMouseClicked="#onSearchButtonClicked" prefHeight="57.0" prefWidth="160.0" ripplerFill="WHITE" style="-fx-background-color: #ab1919;" text="← Cancelar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="documentoEdit" layoutX="216.0" layoutY="260.0" prefHeight="23.0" prefWidth="294.0" text="..." textFill="WHITE">
+               <font>
+                  <Font name="Microsoft YaHei UI" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="reportesPanel" layoutY="99.0" prefHeight="768.0" prefWidth="1117.0" style="-fx-background-color: #02152b;" AnchorPane.rightAnchor="2.0">
+         <children>
+            <JFXTabPane layoutX="36.0" layoutY="74.0" prefHeight="671.0" prefWidth="1043.0" style="">
+               <tabs>
+                  <Tab style="-fx-background-color: #0f9d58;" text="        Reporte 1        ">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="1026.0" text="- Detalle: Mostrar el promedio del monto maximo de todos los clientes segun el departamento de cada una de las nacionalidades." textFill="WHITE" />
+                              <TableView fx:id="detalle1" layoutX="40.0" layoutY="49.0" prefHeight="280.0" prefWidth="974.0">
+                                <columns>
+                                  <TableColumn fx:id="d1Nacionalidad" prefWidth="316.0" text="Nacionalidad" />
+                                  <TableColumn fx:id="d1Departamento" prefWidth="301.0" text="Departamento/Estado" />
+                                    <TableColumn fx:id="d1Promedio" prefWidth="247.0" text="Promedio del monto máximo" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="14.0" layoutY="338.0" prefHeight="35.0" prefWidth="1026.0" text="- Resumen: Mostrar el promedio del monto maximo de todos los clientes según las nacionalidades. " textFill="WHITE" />
+                              <TableView fx:id="resumen1" layoutX="35.0" layoutY="373.0" prefHeight="280.0" prefWidth="974.0">
+                                 <columns>
+                                    <TableColumn fx:id="r1Nacionalidad" prefWidth="480.0" text="Nacionalidad" />
+                                    <TableColumn fx:id="r1Promedio" prefWidth="491.0" text="Promedio del monto máximo" />
+                                 </columns>
+                              </TableView>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab style="-fx-background-color: #0f9d58;" text="        Reporte 2          ">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="1026.0" text="Detalle: Mostrar la cantidad de clientes que tienen cuenta de Twitter según la edad en cada una de las nacionalidades." textFill="WHITE" />
+                              <TableView fx:id="detalle2" layoutX="40.0" layoutY="49.0" prefHeight="280.0" prefWidth="974.0">
+                                 <columns>
+                                    <TableColumn fx:id="d2Nacionalidad" prefWidth="286.0" text="Nacionalidad" />
+                                    <TableColumn fx:id="d2Edad" minWidth="0.0" prefWidth="349.0" text="Edad" />
+                                    <TableColumn fx:id="d2Cantidad" prefWidth="338.0" text="Cantidad de clientes" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="14.0" layoutY="338.0" prefHeight="35.0" prefWidth="1026.0" text="Resumen: Mostrar la cantidad de clientes que tienen cuenta de Twitter según la edad." textFill="WHITE" />
+                              <TableView fx:id="resumen2" layoutX="35.0" layoutY="373.0" prefHeight="280.0" prefWidth="974.0">
+                                 <columns>
+                                    <TableColumn fx:id="r2Edad" prefWidth="472.0" text="Edad" />
+                                    <TableColumn fx:id="r2Cantidad" prefWidth="501.0" text="Cantidad de clientes" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab style="-fx-background-color: #0f9d58;" text="        Reporte 3          ">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="detalle3" layoutX="35.0" layoutY="38.0" prefHeight="280.0" prefWidth="974.0">
+                                 <columns>
+                                    <TableColumn fx:id="d3Nacionalidad" prefWidth="306.0" text="Nacionalidad" />
+                                    <TableColumn fx:id="d3EstadoCivil" prefWidth="321.0" text="Estado Civil" />
+                                    <TableColumn fx:id="d3CantidadPrestamos" prefWidth="321.0" text="Cantidad de préstamos" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="-3.0" prefHeight="35.0" prefWidth="1043.0" text="Detalle: Mostrar la cantidad de prestamos realizados mayores o iguales a 10000 según el tipo de estado civil de la persona en cada una de las nacionalidades." textFill="WHITE" />
+                              <TableView fx:id="resumen3" layoutX="32.0" layoutY="406.0" prefHeight="142.0" prefWidth="974.0">
+                                 <columns>
+                                    <TableColumn fx:id="r3Cantidad" prefWidth="973.0" text="Cantidad de préstamos" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="14.0" layoutY="364.0" prefHeight="35.0" prefWidth="1026.0" text="Resumen: Mostrar la cantidad de prestamos realizados arriba de 10000." textFill="WHITE" />
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab style="-fx-background-color: #0f9d58;" text="        Reporte 4          ">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="9.0" layoutY="7.0" prefHeight="35.0" prefWidth="1026.0" text="- Detalle: Mostrar la cantidad de usuarios nuevos en el sistema según la nacionalidad y el mes que se registraron. " textFill="WHITE" />
+                              <TableView fx:id="detalle4" layoutX="35.0" layoutY="42.0" prefHeight="280.0" prefWidth="974.0">
+                                 <columns>
+                                    <TableColumn fx:id="d4Nacionalidad" prefWidth="223.0" text="Nacionalidad" />
+                                    <TableColumn fx:id="d4Departamento" prefWidth="269.0" text="Departamento" />
+                                    <TableColumn fx:id="d4Mes" prefWidth="240.0" text="Mes" />
+                                    <TableColumn fx:id="d4Cantidad" prefWidth="241.0" text="Cantidad de Usuarios" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="14.0" layoutY="334.0" prefHeight="35.0" prefWidth="1026.0" text="Resumen: Mostrar la cantidad de usuarios nuevos en el sistema según el mes. " textFill="WHITE" />
+                              <TableView fx:id="resumen4" layoutX="35.0" layoutY="369.0" prefHeight="280.0" prefWidth="974.0">
+                                 <columns>
+                                    <TableColumn fx:id="r4Mes" prefWidth="492.0" text="Mes" />
+                                    <TableColumn fx:id="r4Cantidad" prefWidth="481.0" text="Cantidad de usuarios" />
+                                 </columns>
+                              </TableView>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab style="-fx-background-color: #0f9d58;" text="        Reporte 5          ">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="911.0">
+                           <children>
+                              <Label layoutX="9.0" layoutY="8.0" prefHeight="35.0" prefWidth="1026.0" text="- Detalle: La cantidad de las clientes atendidas por cada uno de los empleados según todos los departamentos de la nacionalidad = Guatemala." textFill="WHITE" />
+                              <TableView fx:id="detalle5" layoutX="35.0" layoutY="43.0" prefHeight="280.0" prefWidth="974.0">
+                                 <columns>
+                                    <TableColumn fx:id="d5Departamento" prefWidth="242.0" text="Departamento" />
+                                    <TableColumn fx:id="d5Nombre" prefWidth="263.0" text="Nombre del empleado" />
+                                    <TableColumn fx:id="d5Cantidad" prefWidth="223.0" text="Cantidad de clientes" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="9.0" layoutY="335.0" prefHeight="35.0" prefWidth="1026.0" text="- Resumen: La cantidad de clientes según la nacionalidad" textFill="WHITE" />
+                              <TableView fx:id="resumen5" layoutX="35.0" layoutY="370.0" prefHeight="280.0" prefWidth="974.0">
+                                 <columns>
+                                    <TableColumn fx:id="r5Nacionalidad" prefWidth="491.0" text="Nacionalidad" />
+                                    <TableColumn fx:id="r5Cantidad" prefWidth="482.0" text="Cantidad de clientes" />
+                                 </columns>
+                              </TableView>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab style="-fx-background-color: #0f9d58;" text="        Gráficas            ">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="616.0" prefWidth="1019.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="629.0" prefWidth="1025.0">
+                                       <children>
+                                          <BarChart fx:id="chart1" layoutX="53.0" layoutY="13.0" prefHeight="217.0" prefWidth="405.0" title="Cantidad de clientes que tienen twitter">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                          <BarChart fx:id="chart2" layoutX="553.0" layoutY="14.0" prefHeight="215.0" prefWidth="365.0" title="Clientes por cada empleado">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                          <BarChart fx:id="chart3" layoutX="69.0" layoutY="435.0" prefHeight="215.0" prefWidth="374.0" title="Cantidad de clientes por estado civil">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                          <BarChart fx:id="chart4" layoutX="69.0" layoutY="222.0" prefHeight="213.0" prefWidth="882.0" title="Promedio de monto máximo por departamento (Guatemala)">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </BarChart>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+            <Label layoutX="426.0" layoutY="14.0" prefHeight="35.0" prefWidth="278.0" text="Reportería y Estadísticas" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="twitterPanel" layoutX="-1.0" layoutY="98.0" prefHeight="765.0" prefWidth="1117.0" style="-fx-background-color: #02152b;" visible="false" AnchorPane.topAnchor="100.0">
+         <children>
+            <Label layoutX="452.0" layoutY="35.0" prefHeight="35.0" prefWidth="214.0" text="Tweets de clientes:" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <JFXListView fx:id="tweetList" layoutX="78.0" layoutY="85.0" prefHeight="575.0" prefWidth="963.0" />
+            <Label layoutX="78.0" layoutY="677.0" prefHeight="35.0" prefWidth="491.0" text="*Para ver el tweet completo en su navegador, haga click en él." textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
       <ImageView fx:id="flecha1" fitHeight="20.0" fitWidth="68.0" layoutX="124.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@img/arrowup.png" />
