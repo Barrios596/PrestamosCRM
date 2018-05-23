@@ -94,10 +94,10 @@ public class Main {
         //Tomado de https://www.youtube.com/watch?v=Il4wJxRzvaU
         ConfigurationBuilder cf= new ConfigurationBuilder();
         cf.setDebugEnabled(true)
-                .setOAuthConsumerKey("yTLFbKcUT3VYlx4yUW9PYvfdM")
-                .setOAuthConsumerSecret("yozKtg4nPIcqlQ4NlRbAZ8D0oeIwgojh1rSqqTXhMFPS0AAKWv")
-                .setOAuthAccessToken("131305750-bllgSbbbGVZhtYgaStorPXXojq2Ioo0f2Hgi9oHk")
-                .setOAuthAccessTokenSecret("aFzX82Q17akKZESFNdu2WLJGFXZtfVyJR93fSfF8XV7fK")
+                .setOAuthConsumerKey("---")
+                .setOAuthConsumerSecret("---")
+                .setOAuthAccessToken("---")
+                .setOAuthAccessTokenSecret("---")
         ;
 
         TwitterFactory tf = new TwitterFactory(cf.build());
